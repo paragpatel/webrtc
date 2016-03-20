@@ -59,6 +59,7 @@
       '../../third_party',
       '../../third_party/webrtc',
       '../../webrtc',
+	  'C:/WinDDK/7600.16385.1/inc/atl71',
     ],
     'defines': [
       'EXPAT_RELATIVE_PATH',
@@ -126,6 +127,7 @@
           # users are updated to VS2013 Update 2.
             4702,
         ],
+		'libraries': [ '-lC:\\WinDDK\\7600.16385.1\\lib\\ATL\\i386\\atl.lib', '-lC:\\WinDDK\\7600.16385.1\\lib\\ATL\\i386\\atlsd.lib','-lC:\\WinDDK\\7600.16385.1\\lib\\ATL\\i386\\atls.lib', ],
       }],
       ['OS=="ios"', {
         'defines': [

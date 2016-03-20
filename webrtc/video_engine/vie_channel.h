@@ -30,7 +30,7 @@ namespace webrtc {
 
 class CallStatsObserver;
 class ChannelStatsObserver;
-class Config;
+class Configs;
 class CriticalSectionWrapper;
 class EncodedImageCallback;
 class I420FrameCallback;

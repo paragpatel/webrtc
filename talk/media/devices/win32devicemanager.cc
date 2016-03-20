@@ -26,7 +26,9 @@
  */
 
 #include "talk/media/devices/win32devicemanager.h"
-
+#ifdef _SECURE_ATL
+#undef _SECURE_ATL
+#endif
 #include <atlbase.h>
 #include <dbt.h>
 #include <strmif.h>  // must come before ks.h
@@ -222,7 +224,7 @@ bool GetDevices(const CLSID& catid, std::vector<Device>* devices) {
       mk = NULL;
     }
   }
-
+  
   return true;
 }
 
@@ -269,6 +271,7 @@ HRESULT CricketDeviceFromImmDevice(IMMDevice* device, Device* out) {
 bool GetCoreAudioDevices(
     bool input, std::vector<Device>* devs) {
   HRESULT hr = S_OK;
+  
   CComPtr<IMMDeviceEnumerator> enumerator;
 
   hr = CoCreateInstance(__uuidof(MMDeviceEnumerator), NULL, CLSCTX_ALL,

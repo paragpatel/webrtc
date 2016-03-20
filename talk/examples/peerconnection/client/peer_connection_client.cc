@@ -30,6 +30,7 @@
 #include "talk/examples/peerconnection/client/defaults.h"
 #include "webrtc/base/common.h"
 #include "webrtc/base/logging.h"
+#include "webrtc/system_wrappers/interface/trace.h"
 #include "webrtc/base/nethelpers.h"
 #include "webrtc/base/stringutils.h"
 
@@ -67,6 +68,7 @@ PeerConnectionClient::PeerConnectionClient()
     resolver_(NULL),
     state_(NOT_CONNECTED),
     my_id_(-1) {
+	
 }
 
 PeerConnectionClient::~PeerConnectionClient() {

@@ -95,8 +95,8 @@ class Candidate {
     // Limiting priority to UINT_MAX when value exceeds uint32 max.
     // This can happen for e.g. when preference = 3.
     uint64 prio_val = static_cast<uint64>(preference * 127) << 24;
-    priority_ =
-        static_cast<uint32>(std::min(prio_val, static_cast<uint64>(UINT_MAX)));
+    //priority_ = static_cast<uint32>(std::min(prio_val, static_cast<uint64>(UINT_MAX)));
+	priority_ = static_cast<uint32>(prio_val < static_cast<uint64>(UINT_MAX) ? prio_val : static_cast<uint64>(UINT_MAX));
   }
 
   const std::string & username() const { return username_; }

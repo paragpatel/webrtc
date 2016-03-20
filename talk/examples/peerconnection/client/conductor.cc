@@ -554,7 +554,7 @@ void Conductor::OnSuccess(webrtc::SessionDescriptionInterface* desc) {
 }
 
 void Conductor::OnFailure(const std::string& error) {
-    LOG(LERROR) << error;
+	LOG(LS_ERROR) << error;
 }
 
 void Conductor::SendMessage(const std::string& json_object) {

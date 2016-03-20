@@ -29,6 +29,8 @@
 #include "talk/examples/peerconnection/client/flagdefs.h"
 #include "talk/examples/peerconnection/client/main_wnd.h"
 #include "talk/examples/peerconnection/client/peer_connection_client.h"
+#include "webrtc/base/logging.h"
+#include "webrtc/system_wrappers/interface/trace.h"
 #include "webrtc/base/ssladapter.h"
 #include "webrtc/base/win32socketinit.h"
 #include "webrtc/base/win32socketserver.h"
@@ -36,6 +38,8 @@
 
 int PASCAL wWinMain(HINSTANCE instance, HINSTANCE prev_instance,
                     wchar_t* cmd_line, int cmd_show) {
+					
+
   rtc::EnsureWinsockInit();
   rtc::Win32Thread w32_thread;
   rtc::ThreadManager::Instance()->SetCurrentThread(&w32_thread);
@@ -62,6 +66,10 @@ int PASCAL wWinMain(HINSTANCE instance, HINSTANCE prev_instance,
     ASSERT(false);
     return -1;
   }
+
+  webrtc::Trace::CreateTrace();
+  	webrtc::Trace::SetTraceFile("client_log.txt",true);
+  	webrtc::Trace::set_level_filter(webrtc::kTraceAll);
 
   rtc::InitializeSSL();
   PeerConnectionClient client;
